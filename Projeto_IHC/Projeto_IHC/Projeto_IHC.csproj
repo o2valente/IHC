@@ -58,6 +58,9 @@
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shopping_List.xaml.cs">
+      <DependentUpon>Shopping_List.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shopping_List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,10 +126,15 @@
     <Resource Include="Images\ihc_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\profile.png" />
+    <Resource Include="Images\shopping_list.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\shopping_list.png" />
+    <Resource Include="Images\check.png" />
+    <Resource Include="Images\home_profile.png" />
+    <Resource Include="Images\order.png" />
+    <Resource Include="Images\profile_pic.png" />
+    <Resource Include="Images\put_shopping.png" />
+    <Resource Include="Images\remove_shopping.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
