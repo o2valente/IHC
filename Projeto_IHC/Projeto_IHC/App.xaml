@@ -63,5 +63,33 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="round" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="WhiteSmoke">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--<Style x:Key="roundLab" TargetType="{x:Type StackPanel}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="label">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="WhiteSmoke">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontWeight="Bold"/>
+                        </Border>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
     </Application.Resources>
 </Application>

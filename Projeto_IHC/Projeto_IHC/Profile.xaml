@@ -23,7 +23,7 @@
         <Button Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="25" Click="Button_Click">&lt;</Button>
         <Grid Grid.Row="1" Grid.Column="1">
             <Label Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="30" Foreground="White" >Profile</Label>
-            <Image></Image>
+            <Image Source="Images/profile_pic.png" Margin="119,24,-21.6,24.4"></Image>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <ListView Background="#AA0E27">
@@ -33,15 +33,16 @@
             </ListView>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1">
-            <ComboBox Background="White"  Margin="10,60,47.4,459.4">
+            <ComboBox Background="White"  Margin="10,62,47.4,457.4">
                 <ComboBoxItem>
-                    <Button Style="{StaticResource RoundCorner}" HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Height="19">Miguels's Larder</Button>
+                    <Label HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Height="26" MouseLeftButtonDown="MiguelLarderProfile">Miguels's Larder</Label>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <Button Style="{StaticResource RoundCorner}" HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White">Add Family Member</Button>
+                    <Label HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White">Add Family Member</Label>
                 </ComboBoxItem>
             </ComboBox>
             <Button Style="{StaticResource ResourceKey=RoundCorner}" Margin="10,188,47.4,316.6" Content="Settings" />
         </Grid>
+        <Label Content="Family" FontSize ="14" Foreground="White"  Grid.Column="1" HorizontalAlignment="Left" Margin="5.2,36.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
     </Grid>
 </Page>

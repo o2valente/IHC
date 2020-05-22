@@ -31,16 +31,6 @@ namespace Projeto_IHC
             this.NavigationService.Navigate(welcomePage);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Shopping_List shoppingPage = new Shopping_List();
@@ -51,6 +41,35 @@ namespace Projeto_IHC
         {
             Profile profilePage = new Profile();
             this.NavigationService.Navigate(profilePage);
+        }
+
+        private void ImageButton_Click2(object sender, RoutedEventArgs e)
+        {
+            Shopping_List shoppingPage = new Shopping_List();
+            this.NavigationService.Navigate(shoppingPage);
+        }
+
+        private void ImageButton_Click1(object sender, RoutedEventArgs e)
+        {
+            Profile profilePage = new Profile();
+            this.NavigationService.Navigate(profilePage);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MyLadder(object sender, MouseButtonEventArgs e)
+        {
+            MyLadder myLadder = new MyLadder();
+            this.NavigationService.Navigate(myLadder);
+        }
+
+        private void MiguelLadder(object sender, MouseButtonEventArgs e)
+        {
+            MiguelLarder miguel = new MiguelLarder();
+            this.NavigationService.Navigate(miguel);
         }
     }
 }
