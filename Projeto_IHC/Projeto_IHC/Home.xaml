@@ -17,9 +17,25 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="25" Click="Button_Click"> &lt; </Button>
+        <Button Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="25" Click="Button_Click">&lt;</Button>
+        <Label Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White" >Home</Label>
+        <Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Foreground="White">What would you like to visit?</Label>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Label FontSize="14" Foreground="White"  Margin="0,0,-0.6,-0.6" Content="&#xD;&#xA;&#xD;&#xA; Larders"/>
+            <ComboBox Background="White"  Margin="10,60,47.4,459.4">
+                <ComboBoxItem>
+                    <Button Style="{StaticResource RoundCorner}" HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Click="Button_Click_1" Height="19">My Larder</Button>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button Style="{StaticResource RoundCorner}" HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White" Click="Button_Click_2">Miguel's Larder</Button>
+                </ComboBoxItem>
+            </ComboBox>
+            <Button Style="{StaticResource RoundCorner}" Margin="10,168,77.4,336.4" Click="Button_Click_3">Shopping List</Button>
+            <Image Source="Images/shopping_list.png" Margin="187,168,10.4,336.4" RenderTransformOrigin="1.047,0.003"></Image>
+            <Button Style="{StaticResource ResourceKey=RoundCorner}" Margin="10,274,77.4,230.4" Content="Profile" Click="Button_Click_4"/>
+            <Image Source="Images/profile.png" Margin="178,274,0.4,230.4"></Image>
+        </Grid>
     </Grid>
 </Page>
