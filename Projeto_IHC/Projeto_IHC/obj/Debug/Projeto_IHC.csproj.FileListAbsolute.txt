@@ -18,3 +18,5 @@ C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\Welcome.baml
 C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\Home.g.cs
 C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\Home.baml
 C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\App.baml
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\Profile.g.cs
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\Profile.baml

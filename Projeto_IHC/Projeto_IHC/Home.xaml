@@ -35,7 +35,7 @@
             <Button Style="{StaticResource RoundCorner}" Margin="10,168,77.4,336.4" Click="Button_Click_3">Shopping List</Button>
             <Image Source="Images/shopping_list.png" Margin="187,168,10.4,336.4" RenderTransformOrigin="1.047,0.003"></Image>
             <Button Style="{StaticResource ResourceKey=RoundCorner}" Margin="10,274,77.4,230.4" Content="Profile" Click="Button_Click_4"/>
-            <Image Source="Images/profile.png" Margin="178,274,0.4,230.4"></Image>
+            <Image Source="Images/home_profile.png" Margin="178,274,0.4,230.4"></Image>
         </Grid>
     </Grid>
 </Page>

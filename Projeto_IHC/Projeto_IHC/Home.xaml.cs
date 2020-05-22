@@ -43,12 +43,14 @@ namespace Projeto_IHC
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            Shopping_List shoppingPage = new Shopping_List();
+            this.NavigationService.Navigate(shoppingPage);
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            Profile profilePage = new Profile();
+            this.NavigationService.Navigate(profilePage);
         }
     }
 }
