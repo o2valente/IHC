@@ -50,3 +50,7 @@ C:\Users\nepia\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MyLadder.baml
 C:\Users\nepia\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MiguelLarder.g.cs
 C:\Users\nepia\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MiguelLarder.baml
 C:\Users\nepia\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MiguelLarder.g.cs
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MyLadder.g.cs
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MiguelLarder.baml
+C:\Users\pmate\Documents\IHC\Projeto_IHC\Projeto_IHC\obj\Debug\MyLadder.baml
