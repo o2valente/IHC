@@ -9,18 +9,66 @@
       Title="MiguelLarder"
       Height="700" Width="300">
 
-    <Grid Background="#AA0E27">
+
+
+    <Grid Background="#AA0E27" RenderTransformOrigin="0.499,0.526">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
+
+
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-
+        <!--<Grid.Resources>
+            <local:ListaAlimentos x:Key="ListaAlimentos"/>
+        </Grid.Resources>-->
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="White" Margin="8.2,27.6,10.2,46.8">Miguel's Larder</Label>
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.071"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Image Source="Images/order.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="2" Height="35" Width="34">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-2.184" Y="-1.5"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="white" Orientation="Horizontal" Width="235">
+                        <Label Width="140" Content="{Binding Nome}"></Label>
+                        <Button Width="20" Background="white" BorderBrush="White" Content="+" Click="AddQuant"/>
+                        <Button Width="20" Background="white" BorderBrush="White" Content="-" Click="RemoveQuant"/>
+                        <Label Width="47" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="addIngredient" Margin="0.2,68,62.2,118" VerticalContentAlignment="Center" MouseEnter="NameText_Enter" >Add ingredient</TextBox>
+        <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="ingQuant" Margin="193.2,68,0.2,118" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="Quant_Text">Quantity</TextBox>
+        <Button Style="{StaticResource ResourceKey=round}" Grid.Row="4" Grid.Column="1" Margin="67.2,107,74.2,79" Click="Button_Click_1">Add Ingredient</Button>
+
+
+
     </Grid>
 </Page>

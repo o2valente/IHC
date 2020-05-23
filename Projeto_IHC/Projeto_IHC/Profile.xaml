@@ -33,7 +33,7 @@
             </ListView>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1">
-            <ComboBox Background="White"  Margin="10,62,47.4,457.4">
+            <ComboBox Background="White"  Margin="28,64,29.4,454.6">
                 <ComboBoxItem>
                     <Label HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Height="26" MouseLeftButtonDown="MiguelLarderProfile">Miguels's Larder</Label>
                 </ComboBoxItem>
@@ -41,8 +41,8 @@
                     <Label HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White">Add Family Member</Label>
                 </ComboBoxItem>
             </ComboBox>
-            <Button Style="{StaticResource ResourceKey=RoundCorner}" Margin="10,188,47.4,316.6" Content="Settings" />
+            <Button Style="{StaticResource ResourceKey=round}" Margin="28,193,29.4,311.8" Content="Settings" />
         </Grid>
-        <Label Content="Family" FontSize ="14" Foreground="White"  Grid.Column="1" HorizontalAlignment="Left" Margin="5.2,36.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Label Content="Family" FontSize ="14" Foreground="White"  Grid.Column="1" HorizontalAlignment="Left" Margin="23.2,39.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
     </Grid>
 </Page>

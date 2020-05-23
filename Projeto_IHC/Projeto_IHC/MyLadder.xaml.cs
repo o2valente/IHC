@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Collections;
+
+
 
 namespace Projeto_IHC
 {
@@ -24,15 +27,19 @@ namespace Projeto_IHC
     {
         private ObservableCollection<Comida> _lista;
 
+
+
         public ObservableCollection<Comida> lista
         {
             get { return _lista; }
             set
             {
-                _lista = value;  
+                _lista = value;
             }
         }
-            
+
+
+
 
         public MyLadder()
         {
@@ -46,42 +53,71 @@ namespace Projeto_IHC
                 new Comida { Nome = "Tomato", Quantidade = 2 },
                 new Comida { Nome = "Garlic", Quantidade = 6 }
             };
+
             listaAlimentos.ItemsSource = lista;
+
+
         }
 
-    
+
+
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Home homePage = new Home();
-            this.NavigationService.Navigate(homePage);
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+            else
+            {
+                MessageBox.Show("No entries in back navigation history.");
+            }
+
         }
+
+
 
         private void shopping_click(object sender, RoutedEventArgs e)
         {
-
+            Shopping_List shoppingPage = new Shopping_List();
+            this.NavigationService.Navigate(shoppingPage);
         }
 
-        private void order_click(object sender, RoutedEventArgs e)
+
+
+        private void Order_click(object sender, RoutedEventArgs e)
         {
-           //lista = (ObservableCollection<Comida>) lista.OrderBy(x => x.Quantidade);
 
-           lista = new ObservableCollection<Comida> (lista.OrderBy(x => x.Quantidade));
-           
+            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); ;
+
         }
+
+
+
 
         private void AddQuant(object sender, RoutedEventArgs e)
         {
-            
+
         }
+
+
 
         private void RemoveQuant(object sender, RoutedEventArgs e)
         {
 
+
+
         }
+
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+
+
 
             Comida comida = new Comida
             {
@@ -89,24 +125,33 @@ namespace Projeto_IHC
                 Quantidade = int.Parse(ingQuant.Text)
             };
             lista.Add(comida);
+            listaAlimentos.ItemsSource = lista;
             addIngredient.Clear();
             ingQuant.Clear();
-            
+
         }
+
+
 
         private void listaAlimentos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+
+
         }
+
+
 
         private void NameText_Enter(object sender, MouseEventArgs e)
         {
-            if(addIngredient.Text == "Add ingredient")
+            if (addIngredient.Text == "Add ingredient")
             {
                 addIngredient.Text = "";
                 addIngredient.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
+
+
 
         private void Quant_Text(object sender, MouseEventArgs e)
         {
@@ -118,33 +163,54 @@ namespace Projeto_IHC
         }
     }
 
+
+
     public class Comida
     {
         private string _nome;
         private int _quantidade;
 
-        public string Nome {
+
+
+        public string Nome
+        {
             get { return _nome; }
-            set { _nome = value;}
+            set { _nome = value; }
         }
 
-        public int Quantidade {
+
+
+        public int Quantidade
+        {
+
+
 
             get { return _quantidade; }
-            set { _quantidade = value;
-                
+            set
+            {
+                _quantidade = value;
+
             }
         }
 
-       
+
+
+
+
+
+
     }
+
+
 
 
 
 
     //public class ListaAlimentos : ObservableCollection<Comida> {
 
-        
+
+
+
     //    public ListaAlimentos() 
     //    {
     //        Add(new Comida { Nome = "Onion", Quantidade = 1 });
@@ -155,20 +221,28 @@ namespace Projeto_IHC
     //        Add(new Comida { Nome = "Garlic", Quantidade = 6 });
     //    }
 
+
+
     //    protected override void InsertItem(int index, Comida item)
     //    {
     //        base.InsertItem(index, item);
     //    }
+
+
 
     //    public void additem(string nome)
     //    {
     //        Add(new Comida { Nome = nome, Quantidade = 1 });
     //    }
 
+
+
     //    public void upquant(Comida c)
     //    {
     //        c.Quantidade++;
     //    }
+
+
 
     //    public void downquant(Comida c)
     //    {
@@ -176,6 +250,10 @@ namespace Projeto_IHC
     //    }
 
 
+
+
     //}
+
+
 
 }

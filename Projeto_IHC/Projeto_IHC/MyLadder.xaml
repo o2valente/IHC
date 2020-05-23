@@ -16,6 +16,8 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
 
+
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -29,7 +31,7 @@
         </Grid.Resources>-->
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Margin="8.2,27.6,10.2,46.8">My Larder</Label>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -52,16 +54,16 @@
         <Button Background="#AA0E27 "  BorderBrush="#AA0E27" Margin="210.2,18,6.2,10" Grid.Column="1" Click="shopping_click" Grid.Row="2">
             <Image Source="Images/shopping_list.png" Height="22" Width="27" />
         </Button>
-        
+
         <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Background="white" Orientation="Horizontal" Width="237.20">
-                        <Label Width="150" Content="{Binding Nome}"></Label>
+                    <StackPanel Background="white" Orientation="Horizontal" Width="235">
+                        <Label Width="140" Content="{Binding Nome}"></Label>
                         <Button Width="15" Background="white" BorderBrush="White" Content="+" Click="AddQuant"/>
                         <Button Width="15" Background="white" BorderBrush="White" Content="-" Click="RemoveQuant"/>
                         <Label Width="27" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
-                        <Button x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="35" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="45" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="Images/put_shopping.png" Width="31" Height="20"></Image>
                         </Button>
                     </StackPanel>
@@ -72,5 +74,8 @@
         <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="ingQuant" Margin="193.2,68,0.2,118" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="Quant_Text">Quantity</TextBox>
         <Button Style="{StaticResource ResourceKey=round}" Grid.Row="4" Grid.Column="1" Margin="67.2,107,74.2,79" Click="Button_Click_1">Add Ingredient</Button>
 
+
+
     </Grid>
 </Page>
+ 

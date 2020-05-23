@@ -27,8 +27,14 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Home homePage = new Home();
-            this.NavigationService.Navigate(homePage);
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+            else
+            {
+                MessageBox.Show("No entries in back navigation history.");
+            }
 
         }
 
