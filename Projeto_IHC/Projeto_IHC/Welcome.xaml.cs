@@ -29,7 +29,7 @@ namespace Projeto_IHC
         {
             if(username.Text == ""  || password.Password.ToString()=="" )
             {
-                MessageBox.Show("Insert Username and Password");
+                MessageBox.Show("Insert Username and Password", "LarderManager",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {

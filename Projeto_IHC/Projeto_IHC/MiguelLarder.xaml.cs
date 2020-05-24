@@ -60,7 +60,7 @@ namespace Projeto_IHC
             }
             else
             {
-                MessageBox.Show("No entries in back navigation history.");
+                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -75,37 +75,48 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
-            Comida comida = new Comida
+            if (addIngredient.Text == "" || ingQuant.Text == "")
             {
-                Nome = addIngredient.Text,
-                Quantidade = int.Parse(ingQuant.Text)
-            };
-            bool flag = false;
-            foreach (Comida c in lista)
-            {
-                if (comida.Nome == c.Nome)
-                {
-                    flag = true;
-                }
-
-            }
-            if (flag == true)
-            {
-                MessageBox.Show("Item already in larder");
+                MessageBox.Show("Insert ingredient and quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                lista.Add(comida);
+                Comida comida = new Comida
+                {
+                    Nome = addIngredient.Text,
+                    Quantidade = int.Parse(ingQuant.Text)
+                };
+                bool flag = false;
+                foreach (Comida c in lista)
+                {
+                    if (comida.Nome == c.Nome)
+                    {
+                        flag = true;
+                    }
+
+                }
+                if (flag == true)
+                {
+                    MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                }
+                else
+                {
+                    lista.Add(comida);
+
+                }
+
+                listaAlimentos.ItemsSource = lista;
+                addIngredient.Clear();
+                ingQuant.Clear();
 
             }
-            
-            listaAlimentos.ItemsSource = lista;
-            addIngredient.Clear();
-            ingQuant.Clear();
+        }
 
-
-
+        private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Comida item = (Comida)listaAlimentos.SelectedItem;
+            lista.Remove(item);
         }
 
 
@@ -113,16 +124,12 @@ namespace Projeto_IHC
         private void AddQuant(object sender, RoutedEventArgs e)
         {
 
-
-
         }
 
 
 
         private void RemoveQuant(object sender, RoutedEventArgs e)
         {
-
-
 
         }
 

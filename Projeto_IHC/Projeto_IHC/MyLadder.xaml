@@ -55,7 +55,7 @@
             <Image Source="Images/shopping_list.png" Height="22" Width="27" />
         </Button>
 
-        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
+        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2" SelectionChanged="listaAlimentos_SelectionChanged_1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Background="white" Orientation="Horizontal" Width="235">

@@ -33,7 +33,7 @@ namespace Projeto_IHC
             }
             else
             {
-                MessageBox.Show("No entries in back navigation history.");
+                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

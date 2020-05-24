@@ -57,40 +57,42 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
-            Alimento comida = new Alimento
+            if (addIngredient.Text == "")
             {
-                Nome = addIngredient.Text,
-               // Quantidade = int.Parse(ingQuant.Text)
-            };
-            bool flag = false;
-            foreach (Alimento c in lista1)
-            {
-                if (c.Nome == comida.Nome)
-                {
-                    flag = true;
-                }
-            }
-            if (flag)
-            {
-                MessageBox.Show("Item already in Larder");
+                MessageBox.Show("No ingredient to add", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                lista1.Add(comida);
+                Alimento comida = new Alimento
+                {
+                    Nome = addIngredient.Text,
+                    // Quantidade = int.Parse(ingQuant.Text)
+                };
+                bool flag = false;
+                foreach (Alimento c in lista1)
+                {
+                    if (c.Nome == comida.Nome)
+                    {
+                        flag = true;
+                    }
+                }
+                if (flag)
+                {
+                    MessageBox.Show("Item already in Shopping List", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    lista1.Add(comida);
+                }
+
+                addIngredient.Clear();
+                //ingQuant.Clear();
             }
-            
-            addIngredient.Clear();
-            //ingQuant.Clear();
+
+
 
         }
 
-
-
-        private void listaAlimentos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -100,7 +102,7 @@ namespace Projeto_IHC
             }
             else
             {
-                MessageBox.Show("No entries in back navigation history.");
+                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

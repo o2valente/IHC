@@ -26,9 +26,6 @@ namespace Projeto_IHC
     public partial class MyLadder : Page
     {
         private ObservableCollection<Comida> _lista;
-
-
-
         public ObservableCollection<Comida> lista
         {
             get { return _lista; }
@@ -37,9 +34,6 @@ namespace Projeto_IHC
                 _lista = value;
             }
         }
-
-
-
 
         public MyLadder()
         {
@@ -60,11 +54,6 @@ namespace Projeto_IHC
         }
 
 
-
-
-
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (this.NavigationService.CanGoBack)
@@ -73,7 +62,7 @@ namespace Projeto_IHC
             }
             else
             {
-                MessageBox.Show("No entries in back navigation history.");
+                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -116,36 +105,49 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if (addIngredient.Text == "" || ingQuant.Text == "")
+            {
+                MessageBox.Show("Insert ingredient and quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
 
-            Comida comida = new Comida
-            {
-                Nome = addIngredient.Text,
-                Quantidade = int.Parse(ingQuant.Text)
-            };
-
-            bool flag = false;
-            foreach (Comida c in lista)
-            {
-                if (comida.Nome == c.Nome)
-                {
-                    flag = true;
-                }
-                
-            }
-            if (flag == true)
-            {
-                MessageBox.Show("Item already in larder");
             }
             else
             {
-                lista.Add(comida);
-                
+                Comida comida = new Comida
+                {
+                    Nome = addIngredient.Text,
+                    Quantidade = int.Parse(ingQuant.Text)
+                };
+
+                bool flag = false;
+                foreach (Comida c in lista)
+                {
+                    if (comida.Nome == c.Nome)
+                    {
+                        flag = true;
+                    }
+
+                }
+                if (flag == true)
+                {
+                    MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    lista.Add(comida);
+
+                }
+
+                listaAlimentos.ItemsSource = lista;
+                addIngredient.Clear();
+                ingQuant.Clear();
             }
 
-            listaAlimentos.ItemsSource = lista;
-            addIngredient.Clear();
-            ingQuant.Clear();
+        }
 
+        private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Comida item = (Comida)listaAlimentos.SelectedItem;
+            lista.Remove(item);
         }
 
 

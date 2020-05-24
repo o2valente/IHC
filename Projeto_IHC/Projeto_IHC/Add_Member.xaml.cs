@@ -33,7 +33,7 @@ namespace Projeto_IHC
             }
             else
             {
-                MessageBox.Show("No entries in back navigation history.");
+                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -50,11 +50,11 @@ namespace Projeto_IHC
         {
             if (user_member.Text == "")
             {
-                MessageBox.Show("Insert a username");
+                MessageBox.Show("Insert a username","LarderManager",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Invite sent to user");
+                MessageBox.Show("Invite sent to user","LarderManager",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.NavigationService.GoBack();
             }
         }
