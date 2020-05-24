@@ -152,10 +152,18 @@
   <ItemGroup>
     <Resource Include="Images\check.png" />
     <Resource Include="Images\home_profile.png" />
-    <Resource Include="Images\order.png" />
     <Resource Include="Images\profile_pic.png" />
     <Resource Include="Images\put_shopping.png" />
     <Resource Include="Images\remove_shopping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alpha_sort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\larder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

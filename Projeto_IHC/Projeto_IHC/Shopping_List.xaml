@@ -40,10 +40,30 @@
         <!--<Grid.Resources>
             <local:ListaAlimentos x:Key="ListaAlimentos"/>
         </Grid.Resources>-->
-        
+
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Foreground="White" Margin="8.2,27.6,10.2,46.8">Shopping List</Label>
-        <Image Name="CheckImage1" Source="Images/check.png" Width="32" Height="20" Visibility="Hidden" Grid.Column="1" Margin="127.2,30,91.2,10" Grid.Row="2"></Image>
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="2.2,24,208.2,216" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.071"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Image Source="Images/alpha_sort.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="2" Height="25" Width="27">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180.464"/>
+                        <TranslateTransform X="-2.184" Y="-1.5"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+
         <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2" SelectionChanged="listaAlimentos_SelectionChanged_1" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -57,6 +77,26 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="206.2,26,4.2,0" Grid.Column="1" Click="larder_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.071"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Image Source="Images/larder.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="2" Height="40" Width="38">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180.464"/>
+                        <TranslateTransform X="-2.184" Y="-1.5"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
         <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="addIngredient" Margin="10.2,68,10.2,118" VerticalContentAlignment="Center" MouseEnter="NameText_Enter" >Add ingredient</TextBox>
         <!--<TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="ingQuant" Margin="193.2,68,0.2,118" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="Quant_Text">Quantity</TextBox>-->
         <Button Style="{StaticResource ResourceKey=round}" Grid.Row="4" Grid.Column="1" Margin="10.2,107,10.2,79" Click="Button_Click_1">Add Ingredient</Button>

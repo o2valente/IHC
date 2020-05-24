@@ -53,7 +53,11 @@ namespace Projeto_IHC
 
         }
 
-        
+        private void OrderA_click(object sender, RoutedEventArgs e)
+        {
+            listaAlimentos.ItemsSource = lista1.OrderBy(x => x.Nome);
+        }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -84,7 +88,7 @@ namespace Projeto_IHC
                 {
                     lista1.Add(comida);
                 }
-
+                listaAlimentos.ItemsSource = lista1;
                 addIngredient.Clear();
                 //ingQuant.Clear();
             }
@@ -124,6 +128,12 @@ namespace Projeto_IHC
         {
             Alimento item = (Alimento) listaAlimentos.SelectedItem;
             lista1.Remove(item);
+        }
+
+        private void larder_click(object sender, RoutedEventArgs e)
+        {
+            MyLadder larderPage = new MyLadder();
+            this.NavigationService.Navigate(larderPage);
         }
 
         //private void desaparecer(object sender, RoutedEventArgs e)

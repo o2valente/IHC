@@ -39,5 +39,25 @@ namespace Projeto_IHC
 
             
         }
+
+        
+
+        private void NameText1_Enter(object sender, MouseEventArgs e)
+        {
+            if (password.Password == "password")
+            {
+                password.Password = "";
+                password.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void NameText_Enter(object sender, MouseEventArgs e)
+        {
+            if (username.Text == "Username")
+            {
+                username.Text = "";
+                username.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
     }
 }

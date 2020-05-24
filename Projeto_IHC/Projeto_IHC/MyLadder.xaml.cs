@@ -80,11 +80,13 @@ namespace Projeto_IHC
         private void Order_click(object sender, RoutedEventArgs e)
         {
 
-            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); ;
-
+            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); 
         }
 
-
+        private void OrderA_click(object sender, RoutedEventArgs e)
+        {
+            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+        }
 
 
         private void AddQuant(object sender, RoutedEventArgs e)
@@ -170,6 +172,8 @@ namespace Projeto_IHC
                 ingQuant.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
+
+        
     }
 
 

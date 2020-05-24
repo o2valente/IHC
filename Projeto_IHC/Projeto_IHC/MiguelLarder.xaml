@@ -43,7 +43,27 @@
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1" ScaleX="-1"/>
                         <SkewTransform/>
-                        <RotateTransform/>
+                        <RotateTransform Angle="179.811"/>
+                        <TranslateTransform X="-2.184" Y="-1.5"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="48.2,21,162.2,219" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.071"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Image Source="Images/alpha_sort.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="2" Height="25" Width="27">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180.464"/>
                         <TranslateTransform X="-2.184" Y="-1.5"/>
                     </TransformGroup>
                 </Image.RenderTransform>

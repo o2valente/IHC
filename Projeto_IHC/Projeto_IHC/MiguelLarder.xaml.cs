@@ -71,6 +71,10 @@ namespace Projeto_IHC
            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); 
         }
 
+        private void OrderA_click(object sender, RoutedEventArgs e)
+        {
+            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+        }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

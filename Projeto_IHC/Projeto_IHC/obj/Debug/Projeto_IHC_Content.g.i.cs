@@ -8,11 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/check.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/home_profile.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/order.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/profile_pic.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/put_shopping.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/remove_shopping.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/larder.png")]
 
 
