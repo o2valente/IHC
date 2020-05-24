@@ -117,29 +117,36 @@ namespace Projeto_IHC
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-
-
             Comida comida = new Comida
             {
                 Nome = addIngredient.Text,
                 Quantidade = int.Parse(ingQuant.Text)
             };
-            lista.Add(comida);
+
+            bool flag = false;
+            foreach (Comida c in lista)
+            {
+                if (comida.Nome == c.Nome)
+                {
+                    flag = true;
+                }
+                
+            }
+            if (flag == true)
+            {
+                MessageBox.Show("Item already in larder");
+            }
+            else
+            {
+                lista.Add(comida);
+                
+            }
+
             listaAlimentos.ItemsSource = lista;
             addIngredient.Clear();
             ingQuant.Clear();
 
         }
-
-
-
-        private void listaAlimentos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-
-
-        }
-
 
 
         private void NameText_Enter(object sender, MouseEventArgs e)

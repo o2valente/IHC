@@ -43,5 +43,11 @@ namespace Projeto_IHC
             MiguelLarder miguel = new MiguelLarder();
             this.NavigationService.Navigate(miguel);
         }
+
+        private void AddMember(object sender, MouseButtonEventArgs e)
+        {
+            Add_Member add = new Add_Member();
+            this.NavigationService.Navigate(add);
+        }
     }
 }

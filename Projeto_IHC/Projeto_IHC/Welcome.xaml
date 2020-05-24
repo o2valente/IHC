@@ -22,8 +22,8 @@
         <Label Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" Foreground="White" >Welcome</Label>
         <Image Grid.Row="1" Source="Images/ihc_logo.png" Margin="12.2,0,10.2,0.6" Grid.Column="1"/>
         <Grid HorizontalAlignment="Center" Grid.Row="1" Margin="25.2,224,25.2,26" Grid.RowSpan="2" Grid.Column="1" >
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"  Margin="0,97,0,195" Height="28" VerticalContentAlignment="Center"/>
-            <PasswordBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"  Margin="0,149,0,144" Height="28" VerticalContentAlignment="Center" />
+            <TextBox Name="username" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"  Margin="0,97,0,195" Height="28" VerticalContentAlignment="Center"/>
+            <PasswordBox Name="password" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"  Margin="0,149,0,144" Height="28" VerticalContentAlignment="Center" />
             <Button Style="{StaticResource ResourceKey=round}" Background="White" Foreground="Black" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="60,208,55,69" Click="Button_Click">Login</Button>
         </Grid>
     </Grid>

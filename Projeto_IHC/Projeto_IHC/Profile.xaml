@@ -38,7 +38,7 @@
                     <Label HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Height="26" MouseLeftButtonDown="MiguelLarderProfile">Miguels's Larder</Label>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <Label HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White">Add Family Member</Label>
+                    <Label HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White" MouseLeftButtonDown="AddMember">Add Family Member</Label>
                 </ComboBoxItem>
             </ComboBox>
             <Button Style="{StaticResource ResourceKey=round}" Margin="28,193,29.4,311.8" Content="Settings" />

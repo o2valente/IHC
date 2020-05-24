@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add_Member.xaml.cs">
+      <DependentUpon>Add_Member.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MiguelLarder.xaml.cs">
       <DependentUpon>MiguelLarder.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,10 @@
     <Compile Include="Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
+    <Page Include="Add_Member.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

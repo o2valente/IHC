@@ -27,8 +27,17 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Home homePage = new Home();
-            this.NavigationService.Navigate(homePage);
+            if(username.Text == ""  || password.Password.ToString()=="" )
+            {
+                MessageBox.Show("Insert Username and Password");
+            }
+            else
+            {
+                Home homePage = new Home();
+                this.NavigationService.Navigate(homePage);
+            }
+
+            
         }
     }
 }

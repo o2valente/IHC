@@ -63,7 +63,23 @@ namespace Projeto_IHC
                 Nome = addIngredient.Text,
                // Quantidade = int.Parse(ingQuant.Text)
             };
-            lista1.Add(comida);
+            bool flag = false;
+            foreach (Alimento c in lista1)
+            {
+                if (c.Nome == comida.Nome)
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                MessageBox.Show("Item already in Larder");
+            }
+            else
+            {
+                lista1.Add(comida);
+            }
+            
             addIngredient.Clear();
             //ingQuant.Clear();
 
@@ -100,33 +116,26 @@ namespace Projeto_IHC
         }
 
 
-        private void desaparecer(object sender, RoutedEventArgs e)
-        {
 
-
-            Button b = (Button)sender;
-            StackPanel p = (StackPanel)b.Parent;
-            int index = p.Children.IndexOf(b);
-
-           
-            lista1.Remove(lista1.ElementAt(index));
-           
-            
-        }
 
         private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            int item = listaAlimentos.SelectedIndex;
-            lista1.Remove(lista1.ElementAt(item));
+            Alimento item = (Alimento) listaAlimentos.SelectedItem;
+            lista1.Remove(item);
         }
 
-        //private void Quant_Text(object sender, MouseEventArgs e)
+        //private void desaparecer(object sender, RoutedEventArgs e)
         //{
-        //    if (ingQuant.Text == "Quantity")
-        //    {
-        //        ingQuant.Text = "";
-        //        ingQuant.Foreground = new SolidColorBrush(Colors.Black);
-        //    }
+
+
+        //    Button b = (Button)sender;
+        //    StackPanel p = (StackPanel)b.Parent;
+        //    int index = p.Children.IndexOf(b);
+
+
+        //    lista1.Remove(lista1.ElementAt(index));
+
+
         //}
     }
 
