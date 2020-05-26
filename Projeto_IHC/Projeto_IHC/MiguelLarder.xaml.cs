@@ -15,7 +15,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-
 namespace Projeto_IHC
 {
     /// <summary>
@@ -23,33 +22,11 @@ namespace Projeto_IHC
     /// </summary>
     public partial class MiguelLarder : Page
     {
-        private ObservableCollection<Comida> _lista;
-
-
-
-        public ObservableCollection<Comida> lista
-        {
-            get { return _lista; }
-            set
-            {
-                _lista = value;
-            }
-        }
+        
         public MiguelLarder()
         {
             InitializeComponent();
-            lista = new ObservableCollection<Comida>()
-            {
-                new Comida { Nome = "Beer", Quantidade = 6 },
-                new Comida { Nome = "Onion", Quantidade = 2 },
-                new Comida { Nome = "Lettuce", Quantidade = 2 },
-                new Comida { Nome = "Tomato", Quantidade = 3 }
-
-            };
-
-
-
-            listaAlimentos.ItemsSource = lista;
+            listaAlimentos.ItemsSource = Globals.Miguel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,12 +45,20 @@ namespace Projeto_IHC
 
         private void Order_click(object sender, RoutedEventArgs e)
         {
-           listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); 
+           listaAlimentos.ItemsSource = Globals.Miguel.OrderBy(x => x.Quantidade);
+            foreach (Comida c in Globals.Miguel)
+            {
+                c.Estado = 1;
+            }
         }
 
         private void OrderA_click(object sender, RoutedEventArgs e)
         {
-            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+            listaAlimentos.ItemsSource = Globals.Miguel.OrderBy(x => x.Nome);
+            foreach (Comida c in Globals.Miguel)
+            {
+                c.Estado = 2;
+            }
         }
 
 
@@ -91,7 +76,7 @@ namespace Projeto_IHC
                     Quantidade = int.Parse(ingQuant.Text)
                 };
                 bool flag = false;
-                foreach (Comida c in lista)
+                foreach (Comida c in Globals.Miguel)
                 {
                     if (comida.Nome == c.Nome)
                     {
@@ -106,21 +91,34 @@ namespace Projeto_IHC
                 }
                 else
                 {
-                    lista.Add(comida);
+                    Globals.Miguel.Add(comida);
 
                 }
 
-                listaAlimentos.ItemsSource = lista;
-                addIngredient.Clear();
-                ingQuant.Clear();
+                checkState(Globals.Miguel);
+                //listaAlimentos.ItemsSource = Globals.My;
+                //addIngredient.Clear();
+                //ingQuant.Clear();
+                addIngredient.Text = "Add ingredient";
+                addIngredient.Foreground = new SolidColorBrush(Colors.Gray);
+                ingQuant.Text = "Quantity";
+                ingQuant.Foreground = new SolidColorBrush(Colors.Gray);
 
             }
         }
 
         private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Comida item = (Comida)listaAlimentos.SelectedItem;
-            lista.Remove(item);
+            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
+            MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (result == MessageBoxResult.Yes)
+            {
+                Comida item = (Comida)listaAlimentos.SelectedItem;
+                Globals.Miguel.Remove(item);
+            }
+            checkState(Globals.Miguel);
+            listaAlimentos.UnselectAll();
+            listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
         }
 
 
@@ -133,6 +131,31 @@ namespace Projeto_IHC
 
 
         private void RemoveQuant(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkState(ObservableCollection<Comida> lista)
+        {
+            if (lista.Count > 0)
+            {
+                if (lista.ElementAt(0).Estado == 1)
+                {
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade);
+                }
+                else if (lista.ElementAt(0).Estado == 2)
+                {
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+                }
+                else
+                {
+                    bye();
+                }
+            }
+
+        }
+
+        private void bye()
         {
 
         }

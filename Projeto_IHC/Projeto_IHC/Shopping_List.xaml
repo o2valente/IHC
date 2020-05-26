@@ -43,7 +43,7 @@
 
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Foreground="White" Margin="8.2,27.6,10.2,46.8">Shopping List</Label>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="2.2,24,208.2,216" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="2.2,24,208.2,216" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" ToolTip="Order Alphabetically">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -77,7 +77,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="206.2,26,4.2,0" Grid.Column="1" Click="larder_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="206.2,26,4.2,0" Grid.Column="1" Click="larder_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" ToolTip="My Larder">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -24,6 +24,7 @@ namespace Projeto_IHC
         public MainWindow()
         {
             InitializeComponent();
+            Globals.InnitLists();
             
         }
 

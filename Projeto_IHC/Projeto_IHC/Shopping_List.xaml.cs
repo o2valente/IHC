@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,48 +15,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Projeto_IHC;
 
 namespace Projeto_IHC
 {
     /// <summary>
     /// Interaction logic for Shopping_List.xaml
     /// </summary>
+    
     public partial class Shopping_List : Page
     {
 
-        private ObservableCollection<Alimento> _lista1;
-
-        public ObservableCollection<Alimento> lista1
-        {
-
-            get { return _lista1; }
-            set
-            {
-                _lista1 = value;
-            }
-        }
+        
+        
 
         public Shopping_List()
         {
             InitializeComponent();
-       
-            lista1 = new ObservableCollection<Alimento>()
-            {
-                new Alimento { Nome = "Cream"},
-                new Alimento { Nome = "Onion"},
-                new Alimento { Nome = "Milk"},
-                new Alimento { Nome = "Steak"},
-                new Alimento { Nome = "Tomato"},
-                new Alimento { Nome = "Garlic"}
-            };
-            listaAlimentos.ItemsSource = lista1;
-           
-
+            
+            
+            listaAlimentos.ItemsSource = Globals.Shopping;
         }
-
+            
+   
         private void OrderA_click(object sender, RoutedEventArgs e)
         {
-            listaAlimentos.ItemsSource = lista1.OrderBy(x => x.Nome);
+            listaAlimentos.ItemsSource = Globals.Shopping.OrderBy(x => x.Nome);
+            foreach (Alimento a in Globals.Shopping)
+            {
+                a.Estado = 2;
+            }
         }
 
 
@@ -73,7 +62,7 @@ namespace Projeto_IHC
                     // Quantidade = int.Parse(ingQuant.Text)
                 };
                 bool flag = false;
-                foreach (Alimento c in lista1)
+                foreach (Alimento c in Globals.Shopping)
                 {
                     if (c.Nome == comida.Nome)
                     {
@@ -86,14 +75,38 @@ namespace Projeto_IHC
                 }
                 else
                 {
-                    lista1.Add(comida);
+                    Globals.Shopping.Add(comida);
                 }
-                listaAlimentos.ItemsSource = lista1;
-                addIngredient.Clear();
-                //ingQuant.Clear();
+                checkState(Globals.Shopping);
+                //listaAlimentos.ItemsSource = Globals.Shopping;
+                //addIngredient.Clear();
+                addIngredient.Text = "Add ingredient";
+                addIngredient.Foreground = new SolidColorBrush(Colors.Gray);
             }
 
 
+
+        }
+
+        private void checkState(ObservableCollection<Alimento> lista)
+        {
+            if (lista.Count > 0)
+            {
+                
+                if (lista.ElementAt(0).Estado == 2)
+                {
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+                }
+                else
+                {
+                    bye();
+                }
+            }
+
+        }
+
+        private void bye()
+        {
 
         }
 
@@ -126,8 +139,18 @@ namespace Projeto_IHC
 
         private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Alimento item = (Alimento) listaAlimentos.SelectedItem;
-            lista1.Remove(item);
+            //First and last line needed cause otherwise messagebox runs twice
+            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
+            MessageBoxResult result = MessageBox.Show("You really want to remove this item?","LarderManager",MessageBoxButton.YesNo,MessageBoxImage.Exclamation);
+            if (result == MessageBoxResult.Yes)
+            {
+                Alimento item = (Alimento)listaAlimentos.SelectedItem;
+                Globals.Shopping.Remove(item);
+            }
+            checkState(Globals.Shopping);
+            listaAlimentos.UnselectAll();
+            listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
+            
         }
 
         private void larder_click(object sender, RoutedEventArgs e)
@@ -154,6 +177,7 @@ namespace Projeto_IHC
     public class Alimento
     {
         private string _nome;
+        private int _estado;
         //private int _quantidade;
 
         public string Nome
@@ -162,6 +186,17 @@ namespace Projeto_IHC
             get { return _nome; }
             set { _nome = value; }
         }
+
+        public int Estado
+        {
+            get { return _estado; }
+            set { _estado = value; }
+        }
+        //0 -> desordenado/default
+        //1 -> ordenado ascendente
+        //2 -> ordenado alfabeticamente
+
+
 
         //public int Quantidade
         //{

@@ -31,7 +31,7 @@
         </Grid.Resources>-->
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Margin="8.2,27.6,10.2,46.8">My Larder</Label>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" ToolTip="Order Ascending">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -51,7 +51,7 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="48.2,21,162.2,219" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="48.2,21,162.2,219" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" ToolTip="Order Alphabetically">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -71,7 +71,7 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <Button Background="#AA0E27 "  BorderBrush="#AA0E27" Margin="210.2,18,6.2,10" Grid.Column="1" Click="shopping_click" Grid.Row="2">
+        <Button Background="#AA0E27 "  BorderBrush="#AA0E27" Margin="210.2,18,6.2,10" Grid.Column="1" Click="shopping_click" Grid.Row="2" ToolTip="Shopping List">
             <Image Source="Images/shopping_list.png" Height="22" Width="27" />
         </Button>
 

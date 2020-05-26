@@ -58,6 +58,7 @@
     <Compile Include="Add_Member.xaml.cs">
       <DependentUpon>Add_Member.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="MiguelLarder.xaml.cs">
       <DependentUpon>MiguelLarder.xaml</DependentUpon>
     </Compile>

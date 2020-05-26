@@ -25,30 +25,14 @@ namespace Projeto_IHC
     /// </summary>
     public partial class MyLadder : Page
     {
-        private ObservableCollection<Comida> _lista;
-        public ObservableCollection<Comida> lista
-        {
-            get { return _lista; }
-            set
-            {
-                _lista = value;
-            }
-        }
+        
 
         public MyLadder()
         {
             InitializeComponent();
-            lista = new ObservableCollection<Comida>()
-            {
-                new Comida { Nome = "Cream", Quantidade = 6 },
-                new Comida { Nome = "Onion", Quantidade = 1 },
-                new Comida { Nome = "Milk", Quantidade = 2 },
-                new Comida { Nome = "Steak", Quantidade = 4 },
-                new Comida { Nome = "Tomato", Quantidade = 2 },
-                new Comida { Nome = "Garlic", Quantidade = 6 }
-            };
+            
 
-            listaAlimentos.ItemsSource = lista;
+            listaAlimentos.ItemsSource = Globals.My;
 
 
         }
@@ -80,12 +64,20 @@ namespace Projeto_IHC
         private void Order_click(object sender, RoutedEventArgs e)
         {
 
-            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade); 
+            listaAlimentos.ItemsSource = Globals.My.OrderBy(x => x.Quantidade);
+            foreach (Comida c in Globals.My)
+            {
+                c.Estado = 1;
+            }
         }
 
         private void OrderA_click(object sender, RoutedEventArgs e)
         {
-            listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+            listaAlimentos.ItemsSource = Globals.My.OrderBy(x => x.Nome);
+            foreach (Comida c in Globals.My)
+            {
+                c.Estado = 2;
+            }
         }
 
 
@@ -121,7 +113,7 @@ namespace Projeto_IHC
                 };
 
                 bool flag = false;
-                foreach (Comida c in lista)
+                foreach (Comida c in Globals.My)
                 {
                     if (comida.Nome == c.Nome)
                     {
@@ -135,23 +127,60 @@ namespace Projeto_IHC
                 }
                 else
                 {
-                    lista.Add(comida);
+                    Globals.My.Add(comida);
+                    
 
                 }
-
-                listaAlimentos.ItemsSource = lista;
-                addIngredient.Clear();
-                ingQuant.Clear();
+                checkState(Globals.My);
+                //listaAlimentos.ItemsSource = Globals.My;
+                //addIngredient.Clear();
+                //ingQuant.Clear();
+                addIngredient.Text = "Add ingredient";
+                addIngredient.Foreground = new SolidColorBrush(Colors.Gray);
+                ingQuant.Text = "Quantity";
+                ingQuant.Foreground = new SolidColorBrush(Colors.Gray);
             }
 
         }
 
         private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Comida item = (Comida)listaAlimentos.SelectedItem;
-            lista.Remove(item);
+            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
+            MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (result == MessageBoxResult.Yes)
+            {
+                Comida item = (Comida)listaAlimentos.SelectedItem;
+                Globals.My.Remove(item);
+            }
+            checkState(Globals.My);
+            listaAlimentos.UnselectAll();
+            listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
         }
 
+        private void checkState(ObservableCollection<Comida> lista)
+        {
+            if (lista.Count > 0)
+            {
+                if (lista.ElementAt(0).Estado == 1)
+                {
+                    listaAlimentos.ItemsSource =  lista.OrderBy(x => x.Quantidade);
+                }
+                else if (lista.ElementAt(0).Estado == 2)
+                {
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+                }
+                else
+                {
+                    bye();
+                }
+            }
+            
+        }
+
+        private void bye()
+        {
+
+        }
 
         private void NameText_Enter(object sender, MouseEventArgs e)
         {
@@ -182,7 +211,7 @@ namespace Projeto_IHC
     {
         private string _nome;
         private int _quantidade;
-
+        private int _estado;
 
 
         public string Nome
@@ -196,8 +225,6 @@ namespace Projeto_IHC
         public int Quantidade
         {
 
-
-
             get { return _quantidade; }
             set
             {
@@ -206,12 +233,14 @@ namespace Projeto_IHC
             }
         }
 
-
-
-
-
-
-
+        public int Estado
+        {
+            get { return _estado; }
+            set { _estado = value; }
+        }
+        //0 -> desordenado/default
+        //1 -> ordenado ascendente
+        //2 -> ordenado alfabeticamente
     }
 
 
