@@ -23,6 +23,10 @@ namespace Projeto_IHC
         public Profile()
         {
             InitializeComponent();
+            name.Content = Globals.user.Nome;
+            date.Text = Globals.user.Date;
+            location.Text = Globals.user.Location;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,6 +52,14 @@ namespace Projeto_IHC
         {
             Add_Member add = new Add_Member();
             this.NavigationService.Navigate(add);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Globals.user.Date = date.Text;
+            Globals.user.Location = location.Text;
+            MessageBox.Show("Profile Saved","LarderManager",MessageBoxButton.OK,MessageBoxImage.Information);
+            
         }
     }
 }

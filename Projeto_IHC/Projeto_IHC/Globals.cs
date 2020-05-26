@@ -41,6 +41,9 @@ namespace Projeto_IHC
             }
         }
 
+        public static User user;
+        
+
         public static void InnitLists()
         {
             Shopping = new ObservableCollection<Alimento>()
@@ -70,6 +73,14 @@ namespace Projeto_IHC
                 new Comida { Nome = "Steak", Quantidade = 4 },
                 new Comida { Nome = "Tomato", Quantidade = 2 },
                 new Comida { Nome = "Garlic", Quantidade = 6 }
+            };
+
+            user = new User
+            {
+                Nome = null,
+                Date = "01/01/1999",
+                Location = "Aveiro"
+
             };
         }
 

@@ -27,12 +27,13 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(username.Text == ""  || password.Password.ToString()=="" )
+            if(username.Text == ""  || password.Password.ToString()=="" || username.Text == "Username" || password.Password.ToString() == "password")
             {
                 MessageBox.Show("Insert Username and Password", "LarderManager",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
+                Globals.user.Nome = username.Text;
                 Home homePage = new Home();
                 this.NavigationService.Navigate(homePage);
             }
@@ -59,5 +60,33 @@ namespace Projeto_IHC
                 username.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
+    }
+
+    public class User
+    {
+        private string _nome;
+        private string _date;
+        private string _location;
+
+        public string Nome
+        {
+
+            get { return _nome; }
+            set { _nome = value; }
+        }
+
+        public string Date
+        {
+            get { return _date; }
+            set { _date = value; }
+        }
+        
+        public string Location
+        {
+            get { return _location; }
+            set { _location = value; }
+        }
+
+
     }
 }

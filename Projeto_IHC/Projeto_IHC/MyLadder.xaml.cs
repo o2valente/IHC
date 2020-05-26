@@ -18,6 +18,7 @@ using System.Collections;
 
 
 
+
 namespace Projeto_IHC
 {
     /// <summary>
@@ -99,7 +100,7 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (addIngredient.Text == "" || ingQuant.Text == "")
+            if (addIngredient.Text == "" || ingQuant.Text == "" || addIngredient.Text == "Add ingredient" || ingQuant.Text == "")
             {
                 MessageBox.Show("Insert ingredient and quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -109,7 +110,7 @@ namespace Projeto_IHC
                 Comida comida = new Comida
                 {
                     Nome = addIngredient.Text,
-                    Quantidade = int.Parse(ingQuant.Text)
+                    Quantidade = ingQuant.Text.ParseInt(1)
                 };
 
                 bool flag = false;
@@ -243,59 +244,20 @@ namespace Projeto_IHC
         //2 -> ordenado alfabeticamente
     }
 
+    public static class IntegerExtensios
+    {
+        public static int ParseInt(this string value, int defaultIntValue = 0)
+        {
+            int parsedInt;
+            if (int.TryParse(value, out parsedInt))
+            {
+                return parsedInt;
+            }
 
+            return defaultIntValue;
+        }
 
-
-
-
-    //public class ListaAlimentos : ObservableCollection<Comida> {
-
-
-
-
-    //    public ListaAlimentos() 
-    //    {
-    //        Add(new Comida { Nome = "Onion", Quantidade = 1 });
-    //        Add(new Comida { Nome = "Milk", Quantidade = 2 });
-    //        Add(new Comida { Nome = "Tomato", Quantidade = 2 });
-    //        Add(new Comida { Nome = "Steak", Quantidade = 4 });
-    //        Add(new Comida { Nome = "Cream", Quantidade = 6 });
-    //        Add(new Comida { Nome = "Garlic", Quantidade = 6 });
-    //    }
-
-
-
-    //    protected override void InsertItem(int index, Comida item)
-    //    {
-    //        base.InsertItem(index, item);
-    //    }
-
-
-
-    //    public void additem(string nome)
-    //    {
-    //        Add(new Comida { Nome = nome, Quantidade = 1 });
-    //    }
-
-
-
-    //    public void upquant(Comida c)
-    //    {
-    //        c.Quantidade++;
-    //    }
-
-
-
-    //    public void downquant(Comida c)
-    //    {
-    //        c.Quantidade--;
-    //    }
-
-
-
-
-    //}
-
+}
 
 
 }

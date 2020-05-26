@@ -17,7 +17,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Button Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="25" Click="Button_Click">&lt;</Button>
@@ -25,15 +27,17 @@
             <Label Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="30" Foreground="White" >Profile</Label>
             <Image Source="Images/profile_pic.png" Margin="119,24,-21.6,24.4"></Image>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1">
-            <ListView Background="#AA0E27">
-                <ListViewItem Foreground="White" FontSize="20">Name: João Carvalho</ListViewItem>
-                <ListViewItem Foreground="White" FontSize="20">Birthday: 25/04/75</ListViewItem>
-                <ListViewItem Foreground="White" FontSize="20">Location: Viseu</ListViewItem>
-            </ListView>
-        </Grid>
-        <Grid Grid.Row="3" Grid.Column="1">
-            <ComboBox Background="White"  Margin="28,64,29.4,454.6">
+        
+         <Label  Grid.Row="2" Grid.Column="1" Foreground="White" FontSize="20">Name:</Label>
+        <Label Name="name" Foreground="White" FontSize="20" Grid.Column="1" Margin="75.2,0,10.2,5" Grid.Row="2" />
+         <Label Grid.Row="3" Grid.Column="1" Foreground="White" FontSize="20">Birthday:</Label>
+         <TextBox VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="date" Grid.Column="1" Margin="92.2,5,10.2,5" Grid.Row="3"/>
+         <Label Grid.Row="4" Grid.Column="1" Foreground="White" FontSize="20">Location:</Label>
+         <TextBox VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="location" Grid.Column="1" Margin="92.2,5,10.2,5" Grid.Row="4"/>
+
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Button Style="{StaticResource ResourceKey=round}" Margin="57,10,56.4,489.8" Click="Button_Click_1">Save Profile</Button>
+            <ComboBox Background="White"  Margin="28,117,29.4,401.8">
                 <ComboBoxItem>
                     <Label HorizontalContentAlignment="Center" Width="180" Background="White" BorderBrush="White" Height="26" MouseLeftButtonDown="MiguelLarderProfile">Miguels's Larder</Label>
                 </ComboBoxItem>
@@ -41,8 +45,9 @@
                     <Label HorizontalContentAlignment="Center" Width="181" Background="White" BorderBrush="White" MouseLeftButtonDown="AddMember">Add Family Member</Label>
                 </ComboBoxItem>
             </ComboBox>
-            <Button Style="{StaticResource ResourceKey=round}" Margin="28,193,29.4,311.8" Content="Settings" />
+            <Button Style="{StaticResource ResourceKey=round}" Margin="28,254,29.4,250.8" Content="Settings" />
         </Grid>
         <Label Content="Family" FontSize ="14" Foreground="White"  Grid.Column="1" HorizontalAlignment="Left" Margin="23.2,39.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>

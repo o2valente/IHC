@@ -45,7 +45,7 @@ namespace Projeto_IHC
 
         private void Order_click(object sender, RoutedEventArgs e)
         {
-           listaAlimentos.ItemsSource = Globals.Miguel.OrderBy(x => x.Quantidade);
+            listaAlimentos.ItemsSource = Globals.Miguel.OrderBy(x => x.Quantidade);
             foreach (Comida c in Globals.Miguel)
             {
                 c.Estado = 1;
@@ -64,7 +64,7 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (addIngredient.Text == "" || ingQuant.Text == "")
+            if (addIngredient.Text == "" || ingQuant.Text == "" || addIngredient.Text == "Add ingredient" || ingQuant.Text == "Quantity")
             {
                 MessageBox.Show("Insert ingredient and quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -73,7 +73,7 @@ namespace Projeto_IHC
                 Comida comida = new Comida
                 {
                     Nome = addIngredient.Text,
-                    Quantidade = int.Parse(ingQuant.Text)
+                    Quantidade = ingQuant.Text.ParseInt(1)
                 };
                 bool flag = false;
                 foreach (Comida c in Globals.Miguel)

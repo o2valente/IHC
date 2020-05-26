@@ -48,13 +48,13 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (user_member.Text == "")
+            if (user_member.Text == "" || user_member.Text == "Member username")
             {
                 MessageBox.Show("Insert a username","LarderManager",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Invite sent to user","LarderManager",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Invite sent to user: " + user_member.Text,"LarderManager",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.NavigationService.GoBack();
             }
         }
