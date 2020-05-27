@@ -35,6 +35,7 @@ namespace Projeto_IHC
             
             
             listaAlimentos.ItemsSource = Globals.Shopping;
+         
         }
             
    
@@ -65,7 +66,7 @@ namespace Projeto_IHC
                 bool flag = false;
                 foreach (Comida c in Globals.Shopping)
                 {
-                    if (c.Nome == comida.Nome)
+                    if (String.Equals(comida.Nome, c.Nome, StringComparison.OrdinalIgnoreCase))
                     {
                         flag = true;
                     }
@@ -121,14 +122,19 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
-            else
-            {
-                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //if (this.NavigationService.CanGoBack)
+            //{
+            //    this.NavigationService.GoBack();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+            
+            Home homePage = new Home();
+            this.NavigationService.Navigate(homePage);
+
         }
 
 

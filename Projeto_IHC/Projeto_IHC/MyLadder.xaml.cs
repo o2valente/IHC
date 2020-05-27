@@ -34,6 +34,8 @@ namespace Projeto_IHC
             
 
             listaAlimentos.ItemsSource = Globals.My;
+          
+
 
 
         }
@@ -41,14 +43,18 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
-            else
-            {
-                MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //if (this.NavigationService.CanGoBack)
+            //{
+            //    this.NavigationService.GoBack();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No entries in back navigation history.", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+ 
+            Home homePage = new Home();
+            this.NavigationService.Navigate(homePage);
 
         }
 
@@ -103,10 +109,11 @@ namespace Projeto_IHC
                     
                 };
 
+
                 bool flag = false;
                 foreach (Comida c in Globals.My)
                 {
-                    if (comida.Nome == c.Nome)
+                    if (String.Equals(comida.Nome, c.Nome, StringComparison.OrdinalIgnoreCase))
                     {
                         flag = true;
                     }
@@ -257,12 +264,29 @@ namespace Projeto_IHC
             {
                 if (c.Nome == ((Button)sender).Tag.ToString())
                 {
-                    ad = c;
-                    break;
+                    foreach (Comida d in Globals.Shopping)
+                    {
+                        if (d.Nome == ((Button)sender).Tag.ToString())
+                        {
+                            MessageBox.Show("Item already in Shopping List", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            break;
+                        }
+                        else
+                        {
+
+                            ad = c;
+                            Globals.Shopping.Add(ad);
+                            MessageBox.Show("Item added to Shopping List", "Lardermanager", MessageBoxButton.OK, MessageBoxImage.Information);
+                            break;
+                        }
+                    }
+
+
                 }
+                
             }
-            Globals.Shopping.Add(ad);
-            MessageBox.Show("Item added to Shopping List","Lardermanager",MessageBoxButton.OK,MessageBoxImage.Information);
+            //Globals.Shopping.Add(ad);
+            //MessageBox.Show("Item added to Shopping List","Lardermanager",MessageBoxButton.OK,MessageBoxImage.Information);
             
         }
 
@@ -321,6 +345,100 @@ namespace Projeto_IHC
         }
 
 }
+
+
+
+    public class TextSearchFilter {
+        public TextSearchFilter(
+            ICollectionView filteredView,
+            TextBox textBox
+        )
+        {
+            string filterText = "";
+
+            filteredView.Filter = delegate (object obj)
+            {
+                if (String.IsNullOrEmpty(filterText))
+                    return true;
+                string str = obj as string;
+                if (String.IsNullOrEmpty(str))
+                    return false;
+                int index = str.IndexOf(
+                    filterText,
+                    0,
+                    StringComparison.InvariantCultureIgnoreCase);
+                return index > -1;
+            };
+
+            textBox.TextChanged += delegate
+            {
+                filterText = textBox.Text;
+                filteredView.Refresh();
+            };
+        
+        }
+    }
+
+
+    //public class SearchAndSelectViewModel{
+
+    //        private ICollectionView products;
+
+    //        private Comida selectedProduct;
+
+ 
+
+    //    public SearchAndSelectViewModel()
+
+    //    {
+
+    //    var myProducts = (Globals.My);
+    //    this.products = CollectionViewSource.GetDefaultView(myProducts);
+
+    //    }
+
+
+
+    //    public ICollectionView Products
+
+    //    {
+    //        get
+    //        {
+
+    //            return this.products;
+
+    //        }
+
+    //    }
+
+    //    public Comida SelectedProduct
+
+    //    {
+
+    //        get
+
+    //        {
+
+    //            return this.selectedProduct;
+
+    //        }
+
+    //        set
+
+    //        {
+
+    //            if (this.selectedProduct != value)
+
+    //            {
+
+    //                this.selectedProduct = value;
+    //            }
+
+    //        }
+
+    //    }
+
+    //}
 
 
 }

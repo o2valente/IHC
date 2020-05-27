@@ -78,7 +78,7 @@ namespace Projeto_IHC
                 bool flag = false;
                 foreach (Comida c in Globals.Miguel)
                 {
-                    if (comida.Nome == c.Nome)
+                    if (String.Equals(comida.Nome, c.Nome, StringComparison.OrdinalIgnoreCase))
                     {
                         flag = true;
                     }

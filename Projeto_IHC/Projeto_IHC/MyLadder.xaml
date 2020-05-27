@@ -10,7 +10,7 @@
       Height="700" Width="300"
       >
 
-    <Grid Background="#AA0E27" RenderTransformOrigin="0.499,0.526">
+    <Grid Background="#AA0E27" RenderTransformOrigin="0.499,0.526" FocusManager.FocusedElement = "{Binding ElementName = Search }">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
@@ -28,7 +28,7 @@
         </Grid.Resources>-->
         <Button Background="White" Grid.ColumnSpan="2" Click="Button_Click" Height="49" VerticalAlignment="Top" Margin="0,0,250.2,0">&lt;</Button>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Margin="8.2,27.6,10.2,46.8">My Larder</Label>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,21,202.2,219" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" ToolTip="Order Ascending">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="8.2,14,202.2,6" Grid.Column="1" Click="Order_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" ToolTip="Order Ascending">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -48,7 +48,7 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="48.2,21,162.2,219" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" ToolTip="Order Alphabetically">
+        <Button Background="#AA0E27" BorderBrush="#AA0E27" Margin="47.2,15,163.2,5" Grid.Column="1" Click="OrderA_click" Grid.Row="2" RenderTransformOrigin="0.5,0.5" ToolTip="Order Alphabetically">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -57,13 +57,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-            <Image Source="Images/alpha_sort.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="2" Height="25" Width="27">
+            <Image Source="Images/alpha_sort.png" RenderTransformOrigin="0.458,-0.297" Grid.Column="1" Grid.Row="2" Height="25" Width="27">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1" ScaleX="-1"/>
                         <SkewTransform/>
                         <RotateTransform Angle="180.464"/>
-                        <TranslateTransform X="-2.184" Y="-1.5"/>
+                        <TranslateTransform X="-2.031" Y="-1.507"/>
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
@@ -71,28 +71,39 @@
         <Button Background="#AA0E27 "  BorderBrush="#AA0E27" Margin="210.2,18,6.2,10" Grid.Column="1" Click="shopping_click" Grid.Row="2" ToolTip="Shopping List">
             <Image Source="Images/shopping_list.png" Height="22" Width="27" />
         </Button>
-
-        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Background="white" Orientation="Horizontal" Width="235">
-                        <Label Width="120" Content="{Binding Nome}"></Label>
-                        <Button ToolTip="Remove" Name="remove" Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Click="removeItem">
-                            <Image Width="15" Source="Images/remove.png"></Image>
-                        </Button>
-                        <Button Name="sum" Width="15" Background="white" BorderBrush="White" Content="+" Tag="{Binding Nome}" Click="AddQuant"/>
-                        <Button Name="sub" Width="15" Background="white" BorderBrush="White" Content="-" Tag="{Binding Nome}" Click="RemoveQuant"/>
-                        <Label Name="labelQuant" Width="27" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
-                        <Button ToolTip="Add to Shopping List" x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="45" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddToSP" Tag="{Binding Nome}">
-                            <Image Source="Images/put_shopping.png" Width="31" Height="20"></Image>
-                        </Button>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <!--<UserControl x:Class="QuickSearchAndSelect.SearchAndSelectView"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        mc:Ignorable="d">-->
+            <!--<StackPanel Grid.Column="1" Grid.Row="3" Height="200" Width="245">
+                <TextBox x:Name="Filter"/>-->
+                <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Background="white" Orientation="Horizontal" Width="235">
+                                <Label Width="120" Content="{Binding Nome}"></Label>
+                                <Button ToolTip="Remove" Name="remove" Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Click="removeItem">
+                                    <Image Width="15" Source="Images/remove.png"></Image>
+                                </Button>
+                                <Button Name="sum" Width="15" Background="white" BorderBrush="White" Content="+" Tag="{Binding Nome}" Click="AddQuant"/>
+                                <Button Name="sub" Width="15" Background="white" BorderBrush="White" Content="-" Tag="{Binding Nome}" Click="RemoveQuant"/>
+                                <Label Name="labelQuant" Width="27" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
+                                <Button ToolTip="Add to Shopping List" x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="45" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddToSP" Tag="{Binding Nome}">
+                                    <Image Source="Images/put_shopping.png" Width="31" Height="20"></Image>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            <!--</StackPanel>-->
+        <!--</UserControl>-->
         <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="addIngredient" Margin="0.2,68,62.2,118" VerticalContentAlignment="Center" MouseEnter="NameText_Enter" >Add ingredient</TextBox>
         <TextBox Foreground="Gray" Grid.Row="4" Grid.Column="1" Name="ingQuant" Margin="193.2,68,0.2,118" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseEnter="Quant_Text">Quantity</TextBox>
         <Button Style="{StaticResource ResourceKey=round}" Grid.Row="4" Grid.Column="1" Margin="67.2,107,74.2,79" Click="Button_Click_1">Add Ingredient</Button>
+        
+       
 
 
 
