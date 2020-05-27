@@ -9,8 +9,8 @@ namespace Projeto_IHC
 {
     public static class Globals
     {
-        private static ObservableCollection<Alimento> _Shopping;
-        public static ObservableCollection<Alimento> Shopping
+        private static ObservableCollection<Comida> _Shopping;
+        public static ObservableCollection<Comida> Shopping
         {
 
             get { return _Shopping; }
@@ -46,33 +46,33 @@ namespace Projeto_IHC
 
         public static void InnitLists()
         {
-            Shopping = new ObservableCollection<Alimento>()
+            Shopping = new ObservableCollection<Comida>()
             {
-                new Alimento { Nome = "Cream"},
-                new Alimento { Nome = "Onion"},
-                new Alimento { Nome = "Milk"},
-                new Alimento { Nome = "Steak"},
-                new Alimento { Nome = "Tomato"},
-                new Alimento { Nome = "Garlic"}
+                new Comida { Nome = "Cream",Quantidade=0, Estado=0},
+                new Comida { Nome = "Onion",Quantidade=0, Estado=0},
+                new Comida { Nome = "Milk",Quantidade=0, Estado=0},
+                new Comida { Nome = "Steak",Quantidade=0, Estado=0},
+                new Comida { Nome = "Tomato",Quantidade=0, Estado=0},
+                new Comida { Nome = "Garlic",Quantidade=0, Estado=0}
             };
 
             Miguel = new ObservableCollection<Comida>()
             {
-                new Comida { Nome = "Beer", Quantidade = 6 },
-                new Comida { Nome = "Onion", Quantidade = 2 },
-                new Comida { Nome = "Lettuce", Quantidade = 2 },
-                new Comida { Nome = "Tomato", Quantidade = 3 }
+                new Comida { Nome = "Beer", Quantidade = 6, Estado=0 },
+                new Comida { Nome = "Onion", Quantidade = 2, Estado=0 },
+                new Comida { Nome = "Lettuce", Quantidade = 2, Estado=0 },
+                new Comida { Nome = "Tomato", Quantidade = 3, Estado=0 }
 
             };
 
             My = new ObservableCollection<Comida>()
             {
-                new Comida { Nome = "Cream", Quantidade = 6 },
-                new Comida { Nome = "Onion", Quantidade = 1 },
-                new Comida { Nome = "Milk", Quantidade = 2 },
-                new Comida { Nome = "Steak", Quantidade = 4 },
-                new Comida { Nome = "Tomato", Quantidade = 2 },
-                new Comida { Nome = "Garlic", Quantidade = 6 }
+                new Comida { Nome = "Cream", Quantidade = 6, Estado=0 },
+                new Comida { Nome = "Onion", Quantidade = 1, Estado=0 },
+                new Comida { Nome = "Milk", Quantidade = 2, Estado=0 },
+                new Comida { Nome = "Steak", Quantidade = 4, Estado=0 },
+                new Comida { Nome = "Tomato", Quantidade = 2, Estado=0 },
+                new Comida { Nome = "Garlic", Quantidade = 6, Estado=0 }
             };
 
             user = new User

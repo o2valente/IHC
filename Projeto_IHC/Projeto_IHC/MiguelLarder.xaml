@@ -70,13 +70,16 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2" SelectionChanged="listaAlimentos_SelectionChanged_1">
+        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Background="white" Orientation="Horizontal" Width="235">
-                        <Label Width="140" Content="{Binding Nome}"></Label>
-                        <Button Width="20" Background="white" BorderBrush="White" Content="+" Click="AddQuant"/>
-                        <Button Width="20" Background="white" BorderBrush="White" Content="-" Click="RemoveQuant"/>
+                        <Label Width="120" Content="{Binding Nome}"></Label>
+                        <Button ToolTip="Remove" Name="remove" Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Click="removeItem">
+                            <Image Width="15" Source="Images/remove.png"></Image>
+                        </Button>
+                        <Button Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Content="+" Click="AddQuant"/>
+                        <Button Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Content="-" Click="RemoveQuant"/>
                         <Label Width="47" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
                     </StackPanel>
                 </DataTemplate>

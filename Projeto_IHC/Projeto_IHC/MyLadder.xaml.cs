@@ -82,19 +82,7 @@ namespace Projeto_IHC
         }
 
 
-        private void AddQuant(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-
-        private void RemoveQuant(object sender, RoutedEventArgs e)
-        {
-
-
-
-        }
+        
 
 
 
@@ -110,7 +98,9 @@ namespace Projeto_IHC
                 Comida comida = new Comida
                 {
                     Nome = addIngredient.Text,
-                    Quantidade = ingQuant.Text.ParseInt(1)
+                    Quantidade = ingQuant.Text.ParseInt(1),
+                    Estado = 0
+                    
                 };
 
                 bool flag = false;
@@ -144,25 +134,42 @@ namespace Projeto_IHC
 
         }
 
-        private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        
+
+        private void removeItem(object sender, RoutedEventArgs e)
         {
-            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
             MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (result == MessageBoxResult.Yes)
             {
-                Comida item = (Comida)listaAlimentos.SelectedItem;
-                Globals.My.Remove(item);
+                int i = 0;
+                int index = 0;
+                foreach (Comida c in Globals.My)
+                {
+                    if (c.Nome == ((Button)sender).Tag.ToString())
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                }
+                Globals.My.RemoveAt(index);
             }
             checkState(Globals.My);
-            listaAlimentos.UnselectAll();
-            listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
         }
 
         private void checkState(ObservableCollection<Comida> lista)
         {
+            ObservableCollection<Comida> temp;
             if (lista.Count > 0)
             {
-                if (lista.ElementAt(0).Estado == 1)
+                if (lista.ElementAt(0).Estado == 0)
+                {
+                    // the list needs to be refreshed
+                    temp = lista;
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Quantidade);
+                    listaAlimentos.ItemsSource = temp;
+                }
+                else if (lista.ElementAt(0).Estado == 1)
                 {
                     listaAlimentos.ItemsSource =  lista.OrderBy(x => x.Quantidade);
                 }
@@ -170,6 +177,7 @@ namespace Projeto_IHC
                 {
                     listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
                 }
+                
                 else
                 {
                     bye();
@@ -201,6 +209,61 @@ namespace Projeto_IHC
                 ingQuant.Text = "";
                 ingQuant.Foreground = new SolidColorBrush(Colors.Black);
             }
+        }
+
+        private void AddQuant(object sender, RoutedEventArgs e)
+        {
+            int i = 0;
+            int index = 0;
+            foreach (Comida c in Globals.My)
+            {
+                if (c.Nome == ((Button)sender).Tag.ToString())
+                {
+                    index = i;
+                    break;
+                }
+                i++;
+            }
+            Globals.My.ElementAt(index).Quantidade++;
+            checkState(Globals.My);
+            
+        }
+
+        private void RemoveQuant(object sender, RoutedEventArgs e)
+        {
+            int i = 0;
+            int index = 0;
+            foreach (Comida c in Globals.My)
+            {
+                if (c.Nome == ((Button)sender).Tag.ToString())
+                {
+                    index = i;
+                    break;
+                }
+                i++;
+            }
+            Globals.My.ElementAt(index).Quantidade--;
+            if (Globals.My.ElementAt(index).Quantidade <= 0)
+            {
+                Globals.My.RemoveAt(index);
+            }
+            checkState(Globals.My);
+        }
+
+        private void AddToSP(object sender, RoutedEventArgs e)
+        {
+            Comida ad = new Comida();
+            foreach (Comida c in Globals.My)
+            {
+                if (c.Nome == ((Button)sender).Tag.ToString())
+                {
+                    ad = c;
+                    break;
+                }
+            }
+            Globals.Shopping.Add(ad);
+            MessageBox.Show("Item added to Shopping List","Lardermanager",MessageBoxButton.OK,MessageBoxImage.Information);
+            
         }
 
         

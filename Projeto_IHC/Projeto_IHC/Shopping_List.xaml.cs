@@ -41,7 +41,7 @@ namespace Projeto_IHC
         private void OrderA_click(object sender, RoutedEventArgs e)
         {
             listaAlimentos.ItemsSource = Globals.Shopping.OrderBy(x => x.Nome);
-            foreach (Alimento a in Globals.Shopping)
+            foreach (Comida a in Globals.Shopping)
             {
                 a.Estado = 2;
             }
@@ -56,13 +56,14 @@ namespace Projeto_IHC
             }
             else
             {
-                Alimento comida = new Alimento
+                Comida comida = new Comida
                 {
                     Nome = addIngredient.Text,
-                    // Quantidade = int.Parse(ingQuant.Text)
+                    Quantidade = 0,
+                    Estado =0
                 };
                 bool flag = false;
-                foreach (Alimento c in Globals.Shopping)
+                foreach (Comida c in Globals.Shopping)
                 {
                     if (c.Nome == comida.Nome)
                     {
@@ -88,12 +89,19 @@ namespace Projeto_IHC
 
         }
 
-        private void checkState(ObservableCollection<Alimento> lista)
+        private void checkState(ObservableCollection<Comida> lista)
         {
+            ObservableCollection<Comida> temp;
             if (lista.Count > 0)
             {
-                
-                if (lista.ElementAt(0).Estado == 2)
+                if (lista.ElementAt(0).Estado == 0)
+                {
+                    // the list needs to be refreshed
+                    temp = lista;
+                    listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
+                    listaAlimentos.ItemsSource = temp;
+                }
+                else if (lista.ElementAt(0).Estado == 2)
                 {
                     listaAlimentos.ItemsSource = lista.OrderBy(x => x.Nome);
                 }
@@ -141,15 +149,31 @@ namespace Projeto_IHC
         {
             //First and last line needed cause otherwise messagebox runs twice
             listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
-            MessageBoxResult result = MessageBox.Show("You really want to remove this item?","LarderManager",MessageBoxButton.YesNo,MessageBoxImage.Exclamation);
-            if (result == MessageBoxResult.Yes)
-            {
-                Alimento item = (Alimento)listaAlimentos.SelectedItem;
-                Globals.Shopping.Remove(item);
-            }
-            checkState(Globals.Shopping);
+            
             listaAlimentos.UnselectAll();
             listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
+            
+        }
+
+        private void desaparecer(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (result == MessageBoxResult.Yes)
+            {
+                int i = 0;
+                int index = 0;
+                foreach (Comida c in Globals.Shopping)
+                {
+                    if (c.Nome == ((Button)sender).Tag.ToString())
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                }
+                Globals.Shopping.RemoveAt(index);
+                checkState(Globals.Shopping);
+            }
             
         }
 
@@ -159,58 +183,9 @@ namespace Projeto_IHC
             this.NavigationService.Navigate(larderPage);
         }
 
-        //private void desaparecer(object sender, RoutedEventArgs e)
-        //{
-
-
-        //    Button b = (Button)sender;
-        //    StackPanel p = (StackPanel)b.Parent;
-        //    int index = p.Children.IndexOf(b);
-
-
-        //    lista1.Remove(lista1.ElementAt(index));
-
-
-        //}
+        
     }
 
-    public class Alimento
-    {
-        private string _nome;
-        private int _estado;
-        //private int _quantidade;
-
-        public string Nome
-        {
-
-            get { return _nome; }
-            set { _nome = value; }
-        }
-
-        public int Estado
-        {
-            get { return _estado; }
-            set { _estado = value; }
-        }
-        //0 -> desordenado/default
-        //1 -> ordenado ascendente
-        //2 -> ordenado alfabeticamente
-
-
-
-        //public int Quantidade
-        //{
-
-        //    get { return _quantidade; }
-        //    set
-        //    {
-        //        _quantidade = value;
-
-        //    }
-        //}
-
-
-    }
-
+    
 }
 

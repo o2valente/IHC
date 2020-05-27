@@ -69,10 +69,10 @@
                 <DataTemplate>
                     <StackPanel Background="white" Orientation="Horizontal" Width="235">
                         <Label  Content="{Binding Nome}" Width="200"></Label>
-                        <!--<Button x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="35" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Click="desaparecer">
-                            
-                        </Button>-->
-                        <Image Source="Images/remove_shopping.png" Width="35" Height="26"></Image>
+                        <Button Tag="{Binding Nome}" ToolTip="Remove from Shopping List" x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="35" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Click="desaparecer">
+                            <Image Source="Images/remove_shopping.png" Width="35" Height="26"></Image>
+                        </Button>
+                        
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

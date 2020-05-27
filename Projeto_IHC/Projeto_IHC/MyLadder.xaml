@@ -72,15 +72,18 @@
             <Image Source="Images/shopping_list.png" Height="22" Width="27" />
         </Button>
 
-        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2" SelectionChanged="listaAlimentos_SelectionChanged_1">
+        <ListBox BorderBrush="#AA0E27" Background="#AA0E27" Grid.Column="1" Grid.Row="3" x:Name="listaAlimentos" Margin="0.2,0,0.2,173" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Background="white" Orientation="Horizontal" Width="235">
-                        <Label Width="140" Content="{Binding Nome}"></Label>
-                        <Button Width="15" Background="white" BorderBrush="White" Content="+" Click="AddQuant"/>
-                        <Button Width="15" Background="white" BorderBrush="White" Content="-" Click="RemoveQuant"/>
-                        <Label Width="27" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
-                        <Button x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="45" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Label Width="120" Content="{Binding Nome}"></Label>
+                        <Button ToolTip="Remove" Name="remove" Width="20" Background="white" BorderBrush="White" Tag="{Binding Nome}" Click="removeItem">
+                            <Image Width="15" Source="Images/remove.png"></Image>
+                        </Button>
+                        <Button Name="sum" Width="15" Background="white" BorderBrush="White" Content="+" Tag="{Binding Nome}" Click="AddQuant"/>
+                        <Button Name="sub" Width="15" Background="white" BorderBrush="White" Content="-" Tag="{Binding Nome}" Click="RemoveQuant"/>
+                        <Label Name="labelQuant" Width="27" HorizontalContentAlignment="right" Content="{Binding Quantidade}"></Label>
+                        <Button ToolTip="Add to Shopping List" x:Name="Cart" Background = "#AA0E27" BorderBrush="#AA0E27" Width="45" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddToSP" Tag="{Binding Nome}">
                             <Image Source="Images/put_shopping.png" Width="31" Height="20"></Image>
                         </Button>
                     </StackPanel>
