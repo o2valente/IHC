@@ -47,13 +47,19 @@ namespace Projeto_IHC
 
         }
 
+        private void MyLadder(object sender, MouseButtonEventArgs e)
+        {
+            MyLadder myLadder = new MyLadder();
+            this.NavigationService.Navigate(myLadder);
+        }
+
         private void MiguelLarderProfile(object sender, MouseButtonEventArgs e)
         {
             MiguelLarder miguel = new MiguelLarder();
             this.NavigationService.Navigate(miguel);
         }
 
-        private void AddMember(object sender, MouseButtonEventArgs e)
+        private void AddMember(object sender, RoutedEventArgs e)
         {
             Add_Member add = new Add_Member();
             this.NavigationService.Navigate(add);
@@ -74,6 +80,12 @@ namespace Projeto_IHC
             else { MessageBox.Show("Invalid Date \nFormat dd/mm/yyyy or dd/mm/yy", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error); }
 
             
+        }
+
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

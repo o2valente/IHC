@@ -27,8 +27,13 @@ namespace Projeto_IHC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Welcome welcomePage = new Welcome();
-            this.NavigationService.Navigate(welcomePage);
+            MessageBoxResult result = MessageBox.Show("Sign Out ?","Larder Manager",MessageBoxButton.YesNo,MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                Welcome welcomePage = new Welcome();
+                this.NavigationService.Navigate(welcomePage);
+            }
+            
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

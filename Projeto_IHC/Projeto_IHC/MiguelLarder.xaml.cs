@@ -64,9 +64,9 @@ namespace Projeto_IHC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (addIngredient.Text == "" || ingQuant.Text == "" || addIngredient.Text == "Add ingredient" || ingQuant.Text == "Quantity")
+            if (addIngredient.Text == "" || ingQuant.Text == "" || addIngredient.Text == "Add ingredient" || ingQuant.Text == "Quantity" )
             {
-                MessageBox.Show("Insert ingredient and quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Insert ingredient and a valid quantity", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -91,6 +91,7 @@ namespace Projeto_IHC
                 }
                 else
                 {
+                    
                     Globals.Miguel.Add(comida);
 
                 }
