@@ -123,21 +123,18 @@ namespace Projeto_IHC
 
                 int n = 0;
 
-                if (!(int.TryParse(ingQuant.Text, out n) && n > 0)) { flag1 = true; }
-
+                if (!(int.TryParse(ingQuant.Text, out n) && n > 0))
+                    flag1 = true;
 
                 if (flag == true)
                 {
                     MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-                else if (flag1 == true)
-                {
-                    MessageBox.Show("Quantity has to be a positive Number", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                }else if(flag1 == true)
+                    MessageBox.Show("Quantity has to be a positive int", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
                 else
                 {
                     Globals.My.Add(comida);
-
+                    
 
                 }
                 checkState(Globals.My);
@@ -270,38 +267,45 @@ namespace Projeto_IHC
 
         private void AddToSP(object sender, RoutedEventArgs e)
         {
+            bool flag = false;
             Comida ad = new Comida();
             foreach (Comida c in Globals.My)
             {
                 if (c.Nome == ((Button)sender).Tag.ToString())
                 {
-                    foreach (Comida d in Globals.Shopping)
-                    {
-                        if (d.Nome == ((Button)sender).Tag.ToString())
-                        {
-                            MessageBox.Show("Item already in Shopping List", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            break;
-                        }
-                        else
-                        {
-
-                            ad = c;
-                            Globals.Shopping.Add(ad);
-                            MessageBox.Show("Item added to Shopping List", "Lardermanager", MessageBoxButton.OK, MessageBoxImage.Information);
-                            break;
-                        }
-                    }
-
-
+                    ad = c;
+                    break;
                 }
                 
             }
+
+
+            foreach (Comida d in Globals.Shopping)
+            {
+                if (d.Nome == ((Button)sender).Tag.ToString())
+                {
+                    flag = true;
+                    break;
+                }
+               
+            }
+
+
+            if (flag)
+            {
+                MessageBox.Show("Item already in Shopping List", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else {
+                Globals.Shopping.Add(ad);
+                checkState(Globals.Shopping);
+                MessageBox.Show("Item added to Shopping List", "Lardermanager", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             //Globals.Shopping.Add(ad);
             //MessageBox.Show("Item added to Shopping List","Lardermanager",MessageBoxButton.OK,MessageBoxImage.Information);
-            
+
         }
 
-        
+
     }
 
 
