@@ -111,6 +111,7 @@ namespace Projeto_IHC
 
 
                 bool flag = false;
+                bool flag1 = false;
                 foreach (Comida c in Globals.My)
                 {
                     if (String.Equals(comida.Nome, c.Nome, StringComparison.OrdinalIgnoreCase))
@@ -119,14 +120,24 @@ namespace Projeto_IHC
                     }
 
                 }
+
+                int n = 0;
+
+                if (!(int.TryParse(ingQuant.Text, out n) && n > 0)) { flag1 = true; }
+
+
                 if (flag == true)
                 {
                     MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+                else if (flag1 == true)
+                {
+                    MessageBox.Show("Quantity has to be a positive Number", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
                 else
                 {
                     Globals.My.Add(comida);
-                    
+
 
                 }
                 checkState(Globals.My);

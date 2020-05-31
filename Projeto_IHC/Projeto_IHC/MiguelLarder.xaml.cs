@@ -76,18 +76,28 @@ namespace Projeto_IHC
                     Quantidade = ingQuant.Text.ParseInt(1)
                 };
                 bool flag = false;
+                bool flag1 = false;
                 foreach (Comida c in Globals.Miguel)
                 {
                     if (String.Equals(comida.Nome, c.Nome, StringComparison.OrdinalIgnoreCase))
                     {
                         flag = true;
                     }
-
+                 
                 }
+                int n = 0;
+
+                if (!(int.TryParse(ingQuant.Text, out n) && n > 0)) { flag1 = true; }
+
+
+
                 if (flag == true)
                 {
                     MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
 
+                }else if (flag1 == true)
+                {
+                    MessageBox.Show("Quantity has to be a positive Number", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
