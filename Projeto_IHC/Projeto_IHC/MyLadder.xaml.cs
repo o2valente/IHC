@@ -130,7 +130,7 @@ namespace Projeto_IHC
                 {
                     MessageBox.Show("Item already in larder", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }else if(flag1 == true)
-                    MessageBox.Show("Quantity has to be a positive int", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Quantity has to be a positive number", "LarderManager", MessageBoxButton.OK, MessageBoxImage.Warning);
                 else
                 {
                     Globals.My.Add(comida);
@@ -260,7 +260,17 @@ namespace Projeto_IHC
             Globals.My.ElementAt(index).Quantidade--;
             if (Globals.My.ElementAt(index).Quantidade <= 0)
             {
-                Globals.My.RemoveAt(index);
+                MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Globals.My.RemoveAt(index);
+
+                }
+                else
+                {
+                    Globals.My.ElementAt(index).Quantidade = 1;
+                }
+                
             }
             checkState(Globals.My);
         }
@@ -297,7 +307,7 @@ namespace Projeto_IHC
             }
             else {
                 Globals.Shopping.Add(ad);
-                checkState(Globals.Shopping);
+                checkState(Globals.My);
                 MessageBox.Show("Item added to Shopping List", "Lardermanager", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             //Globals.Shopping.Add(ad);

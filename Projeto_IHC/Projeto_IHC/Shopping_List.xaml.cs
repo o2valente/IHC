@@ -154,8 +154,7 @@ namespace Projeto_IHC
         private void listaAlimentos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             //First and last line needed cause otherwise messagebox runs twice
-            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1;
-            
+            listaAlimentos.SelectionChanged -= listaAlimentos_SelectionChanged_1; 
             listaAlimentos.UnselectAll();
             listaAlimentos.SelectionChanged += listaAlimentos_SelectionChanged_1;
             
@@ -179,6 +178,7 @@ namespace Projeto_IHC
                 }
                 Globals.Shopping.RemoveAt(index);
                 checkState(Globals.Shopping);
+      
             }
             
         }

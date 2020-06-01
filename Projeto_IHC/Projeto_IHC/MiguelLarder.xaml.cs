@@ -176,7 +176,17 @@ namespace Projeto_IHC
             Globals.Miguel.ElementAt(index).Quantidade--;
             if (Globals.Miguel.ElementAt(index).Quantidade <= 0)
             {
-                Globals.Miguel.RemoveAt(index);
+                MessageBoxResult result = MessageBox.Show("You really want to remove this item?", "LarderManager", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Globals.Miguel.RemoveAt(index);
+
+                }
+                else
+                {
+                    Globals.Miguel.ElementAt(index).Quantidade = 1;
+                }
+
             }
             checkState(Globals.Miguel);
         }
